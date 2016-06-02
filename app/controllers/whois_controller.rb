@@ -1,8 +1,9 @@
 class WhoisController < ApplicationController
 
-def show
-
-end
+ def show
+  c = Whois::Client.new
+  r = c.lookup("google.com")
+ end
 
 
 end
