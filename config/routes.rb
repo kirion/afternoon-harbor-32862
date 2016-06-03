@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-  get 'whois/:id' => 'whois#show'
+  get 'whois/:query' => 'whois#show', :constraints => { :query => /[0-9A-Za-z\-\.]+/ }, :defaults => { :format => 'json' }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

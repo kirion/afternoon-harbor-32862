@@ -1,8 +1,13 @@
 class WhoisController < ApplicationController
 
  def show
-  c = Whois::Client.new
-  r = c.lookup("google.com")
+  connection = Whois::Client.new
+  @result = connection.lookup(params[:query])
+  respond_to do |format|
+    format.json do
+      render json: @result.to_json
+    end
+  end
  end
 
 
